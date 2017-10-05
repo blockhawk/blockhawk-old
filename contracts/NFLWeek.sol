@@ -30,23 +30,21 @@ contract NFLWeek is Ownable {
   Game[] public games;
 
   function NFLWeek() {
-    week = 4;
-    games.push(Game("GB", 0, -70, "CHI", 0, State.Scheduled, 1506644700));
-    games.push(Game("MIA", 0, 30, "NO", 0, State.Scheduled, 1506864600));
-    games.push(Game("NE", 0, -90, "CAR", 0, State.Scheduled, 1506877200));
-    games.push(Game("DAL", 0, -65, "LA", 0, State.Scheduled, 1506877200));
-    games.push(Game("MIN", 0, -20, "DET", 0, State.Scheduled, 1506877200));
-    games.push(Game("HOU", 0, 15, "TEN", 0, State.Scheduled, 1506877200));
-    games.push(Game("NYJ", 0, 30, "JAX", 0, State.Scheduled, 1506877200));
-    games.push(Game("CLE", 0, 30, "CIN", 0, State.Scheduled, 1506877200));
-    games.push(Game("BAL", 0, 30, "PIT", 0, State.Scheduled, 1506877200));
-    games.push(Game("ATL", 0, -80, "BUF", 0, State.Scheduled, 1506877200));
-    games.push(Game("TB", 0, -30, "NYG", 0, State.Scheduled, 1506888300));
-    games.push(Game("LAC", 0, -15, "PHI", 0, State.Scheduled, 1506888300));
-    games.push(Game("ARI", 0, -70, "SF", 0, State.Scheduled, 1506888300));
-    games.push(Game("DEN", 0, -30, "OAK", 0, State.Scheduled, 1506889500));
-    games.push(Game("SEA", 0, -130, "IND", 0, State.Scheduled, 1506904200));
-    games.push(Game("KC", 0, -70, "WAS", 0, State.Scheduled, 1506990600));
+    week = 5;
+    games.push(Game("TB", 0, 55, "NE", 0, State.Scheduled, 1507249500));
+    games.push(Game("NYG", 0, -35, "LAC", 0, State.Scheduled, 1507482000));
+    games.push(Game("CIN", 0, -30, "BUF", 0, State.Scheduled, 1507482000));
+    games.push(Game("CLE", 0, -10, "NYJ", 0, State.Scheduled, 1507482000));
+    games.push(Game("PIT", 0, -85, "JAX", 0, State.Scheduled, 1507482000));
+    games.push(Game("MIA", 0, 30, "TEN", 0, State.Scheduled, 1507482000));
+    games.push(Game("IND", 0, -15, "SF", 0, State.Scheduled, 1507482000));
+    games.push(Game("PHI", 0, -65, "ARI", 0, State.Scheduled, 1507482000));
+    games.push(Game("DET", 0, -25, "CAR", 0, State.Scheduled, 1507482000));
+    games.push(Game("LA", 0, -15, "SEA", 0, State.Scheduled, 1507493100));
+    games.push(Game("OAK", 0, -25, "BAL", 0, State.Scheduled, 1507493100));
+    games.push(Game("DAL", 0, -20, "GB", 0, State.Scheduled, 1507494300));
+    games.push(Game("HOU", 0, 15, "KC", 0, State.Scheduled, 1507509000));
+    games.push(Game("CHI", 0, 30, "MIN", 0, State.Scheduled, 1507595400));
   }
 
   function gamesCount() external constant returns (uint256) {
