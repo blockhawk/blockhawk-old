@@ -14,7 +14,8 @@ contract Ownable {
 }
 
 contract NFLWeek is Ownable {
-  enum State { Scheduled, Completed }
+  enum State { Scheduled, Live, Completed }
+  event GameUpdated(uint8 index);
 
   struct Game {
     bytes3 homeTeam;
@@ -24,6 +25,7 @@ contract NFLWeek is Ownable {
     uint8 awayTeamScore;
     State state;
     uint256 startTime;
+    string displayText;
   }
 
   uint8 public week;
@@ -31,31 +33,32 @@ contract NFLWeek is Ownable {
 
   function NFLWeek() {
     week = 5;
-    games.push(Game("TB", 0, 55, "NE", 0, State.Scheduled, 1507249500));
-    games.push(Game("NYG", 0, -35, "LAC", 0, State.Scheduled, 1507482000));
-    games.push(Game("CIN", 0, -30, "BUF", 0, State.Scheduled, 1507482000));
-    games.push(Game("CLE", 0, -10, "NYJ", 0, State.Scheduled, 1507482000));
-    games.push(Game("PIT", 0, -85, "JAX", 0, State.Scheduled, 1507482000));
-    games.push(Game("MIA", 0, 30, "TEN", 0, State.Scheduled, 1507482000));
-    games.push(Game("IND", 0, -15, "SF", 0, State.Scheduled, 1507482000));
-    games.push(Game("PHI", 0, -65, "ARI", 0, State.Scheduled, 1507482000));
-    games.push(Game("DET", 0, -25, "CAR", 0, State.Scheduled, 1507482000));
-    games.push(Game("LA", 0, -15, "SEA", 0, State.Scheduled, 1507493100));
-    games.push(Game("OAK", 0, -25, "BAL", 0, State.Scheduled, 1507493100));
-    games.push(Game("DAL", 0, -20, "GB", 0, State.Scheduled, 1507494300));
-    games.push(Game("HOU", 0, 15, "KC", 0, State.Scheduled, 1507509000));
-    games.push(Game("CHI", 0, 30, "MIN", 0, State.Scheduled, 1507595400));
+    games.push(Game("TB", 0, 55, "NE", 0, State.Scheduled, 1507249500, ""));
+    games.push(Game("NYG", 0, -35, "LAC", 0, State.Scheduled, 1507482000, ""));
+    games.push(Game("CIN", 0, -30, "BUF", 0, State.Scheduled, 1507482000, ""));
+    games.push(Game("CLE", 0, -10, "NYJ", 0, State.Scheduled, 1507482000, ""));
+    games.push(Game("PIT", 0, -85, "JAX", 0, State.Scheduled, 1507482000, ""));
+    games.push(Game("MIA", 0, 30, "TEN", 0, State.Scheduled, 1507482000, ""));
+    games.push(Game("IND", 0, -15, "SF", 0, State.Scheduled, 1507482000, ""));
+    games.push(Game("PHI", 0, -65, "ARI", 0, State.Scheduled, 1507482000, ""));
+    games.push(Game("DET", 0, -25, "CAR", 0, State.Scheduled, 1507482000, ""));
+    games.push(Game("LA", 0, -15, "SEA", 0, State.Scheduled, 1507493100, ""));
+    games.push(Game("OAK", 0, -25, "BAL", 0, State.Scheduled, 1507493100, ""));
+    games.push(Game("DAL", 0, -20, "GB", 0, State.Scheduled, 1507494300, ""));
+    games.push(Game("HOU", 0, 15, "KC", 0, State.Scheduled, 1507509000, ""));
+    games.push(Game("CHI", 0, 30, "MIN", 0, State.Scheduled, 1507595400, ""));
   }
 
   function gamesCount() external constant returns (uint256) {
     return games.length;
   }
 
-  /*function updateGame() external onlyOwner {
-
+  function updateGame(uint8 index, uint8 homeTeamScore, uint8 awayTeamScore, State state, string displayText) external onlyOwner {
+    Game storage game = games[index];
+    game.homeTeamScore = homeTeamScore;
+    game.awayTeamScore = awayTeamScore;
+    game.state = state;
+    game.displayText = displayText;
+    GameUpdated(index);
   }
-
-  function finalizeGame() {
-
-  }*/
 }
