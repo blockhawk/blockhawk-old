@@ -1,5 +1,5 @@
-var NFLWeek = artifacts.require('./NFLWeek.sol');
+var BlockhawkNFL = artifacts.require('./BlockhawkNFL.sol');
 
 module.exports = function(deployer) {
-  deployer.deploy(NFLWeek);
+  deployer.deploy(BlockhawkNFL);
 };
